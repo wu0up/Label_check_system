@@ -1,0 +1,8 @@
+setup.py
+utrac_label/__init__.py
+utrac_label/utrac_label_v1.py
+utrac_label/wsgi.py
+utrac_label.egg-info/PKG-INFO
+utrac_label.egg-info/SOURCES.txt
+utrac_label.egg-info/dependency_links.txt
+utrac_label.egg-info/top_level.txt

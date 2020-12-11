@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>問題單協助確認</title>
+</head>
+<body>
+    
+    <form action='/checked/' method="post">  <!-- action=/checked/，表示填單後，會導到checked的畫面 checked.html-->
+        {% csrf_token %}
+        <p>Question 1. 請問您解這張問題單時，有使用以下參數和背景資料?</p>
+        機關差勤參數、費用參數</br>
+        {% if params %}
+            {% for param in params %}
+            <tr>
+            <td>
+            <input type="checkbox" name="params_check" value='{{param}}' id='{{param}}'>{{param}}</br>
+            </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <p>沒有機關差勤參數、費用參數</p>
+            <input type="hidden" name="params_check" value='n'>
+        {% endif %}
+        </br>
+        使用背景資料</br>
+        {% if bks %}
+            {% for bk in bks %}
+            <tr>
+            <td>
+            <input type="checkbox" name="bk_check" value='{{bk}}' id='{{bk}}'>{{bk}}<br>
+            </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+           <p>沒有「背景資料」</p> 
+           <input type="hidden" name="bk_check" value='n'>
+        {% endif %}
+        
+        <p>Question 2. 請問您覺得這張問題單是否為以下標籤?</p>
+     
+        標籤：{{label.name}}</br> 
+        說明: {{label.description}}</br>
+        <input type="hidden" name="utrac_id" value={{utrac_id}}>
+        <input type="radio" value="1" name="yes_no"> 是
+        <input type="radio" value="2" name="yes_no"> 否<br>
+        <input type="submit" value="送出"> 
+    </form>
+
+    
+   
+
+</body>
+</html>
